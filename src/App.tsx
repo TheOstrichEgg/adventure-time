@@ -1,15 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import TripPage from './pages/TripPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
-    <BrowserRouter basename="/adventure-time">
+    <HashRouter>
       <Routes>
         <Route path="/:id" element={<TripPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

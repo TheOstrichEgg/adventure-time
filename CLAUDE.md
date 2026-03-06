@@ -31,6 +31,6 @@ type: feat | fix | style | refactor | test | chore | docs
 
 ## 주의사항
 
-- `404.html` 은 GitHub Pages SPA 라우팅 핵이다. 절대 삭제하거나 수정하지 말 것. 건드리면 직접 URL 접근 및 새로고침이 깨진다.
+- 라우터는 `HashRouter`를 사용한다. GitHub Pages에서 BrowserRouter + 404.html 핵이 불안정해서 교체함. URL은 `/#/sample` 형식.
 - `any` 타입 사용 금지
 - Phase 1 완료 전에 Phase 2 기능 미리 구현하지 말 것
