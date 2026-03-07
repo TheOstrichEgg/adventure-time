@@ -17,41 +17,50 @@ export default function EventCard({ event, categories }: Props) {
   return (
     <div
       className={[
-        'relative pl-4 py-3 rounded-lg bg-surface border border-border shadow-sm',
-        event.link ? 'cursor-pointer hover:shadow-md transition-shadow' : '',
-        event.required ? 'border-l-4' : 'border-l-4 border-l-transparent',
+        'relative rounded-2xl overflow-hidden',
+        'bg-white/50 dark:bg-white/5 backdrop-blur-md',
+        'ring-1 ring-white/60 dark:ring-white/10',
+        'transition-all duration-200',
+        event.link ? 'cursor-pointer hover:bg-white/70 dark:hover:bg-white/10 hover:-translate-y-0.5' : '',
       ].join(' ')}
-      style={event.required ? { borderLeftColor: category?.color ?? '#6366f1' } : undefined}
       onClick={handleClick}
     >
-      <div className="flex items-start gap-3">
-        <div className="flex flex-col items-end shrink-0 text-xs text-text-muted pt-0.5 w-12">
-          <span className="font-medium text-text-lo">{event.time}</span>
-          {event.time_end && <span>{event.time_end}</span>}
-        </div>
+      {event.required && (
+        <div
+          className="absolute inset-y-0 left-0 w-[3px]"
+          style={{ backgroundColor: category?.color ?? 'var(--color-accent)' }}
+        />
+      )}
 
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-medium text-text-hi text-sm">{event.title}</span>
-            {category && (
-              <span
-                className="text-xs px-2 py-0.5 rounded-full font-medium"
-                style={{ backgroundColor: category.color + '22', color: category.color }}
-              >
-                {category.emoji && <span className="mr-1">{category.emoji}</span>}
-                {category.label}
-              </span>
-            )}
-            {event.link && (
-              <svg className="w-3.5 h-3.5 text-text-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            )}
-          </div>
-          {event.memo && (
-            <p className="mt-1 text-xs text-text-lo leading-relaxed">{event.memo}</p>
+      <div className="flex flex-col gap-1.5 px-5 py-4">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-sm font-medium text-text-muted">
+            {event.time}
+            {event.time_end && <span> → {event.time_end}</span>}
+          </span>
+          {category && (
+            <span
+              className="text-sm px-2.5 py-0.5 rounded-full font-medium shrink-0"
+              style={{ backgroundColor: category.color + '33', color: category.color }}
+            >
+              {category.emoji && <span className="mr-1">{category.emoji}</span>}
+              {category.label}
+            </span>
           )}
         </div>
+
+        <div className="flex items-center gap-2">
+          <span className="text-base font-semibold text-text-hi leading-snug">{event.title}</span>
+          {event.link && (
+            <svg className="w-3.5 h-3.5 text-text-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          )}
+        </div>
+
+        {event.memo && (
+          <p className="text-sm text-text-lo leading-relaxed">{event.memo}</p>
+        )}
       </div>
     </div>
   )
