@@ -1,1 +1,26 @@
 @import "tailwindcss";
+@import "@radix-ui/colors/slate.css";
+@import "@radix-ui/colors/slate-dark.css";
+@import "@radix-ui/colors/indigo.css";
+@import "@radix-ui/colors/indigo-dark.css";
+
+@theme {
+  --color-canvas: var(--slate-2);
+  --color-surface: #ffffff;
+  --color-border: var(--slate-4);
+  --color-border-subtle: var(--slate-3);
+  --color-text-hi: var(--slate-12);
+  --color-text-lo: var(--slate-11);
+  --color-text-muted: var(--slate-9);
+  --color-accent: var(--indigo-11);
+}
+
+html {
+  background-color: var(--color-canvas);
+}
+
+.dark {
+  --color-surface: var(--slate-3);
+  --color-border: var(--slate-6);
+  --color-border-subtle: var(--slate-4);
+}

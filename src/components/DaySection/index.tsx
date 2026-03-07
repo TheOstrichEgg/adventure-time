@@ -16,15 +16,15 @@ export default function DaySection({ day, categories, dayIndex }: Props) {
   return (
     <section className="mb-10">
       <div className="flex items-baseline gap-3 mb-4">
-        <span className="text-xs font-bold text-indigo-500 uppercase tracking-widest">
+        <span className="text-xs font-bold text-accent uppercase tracking-widest">
           Day {dayIndex + 1}
         </span>
-        <h2 className="text-base font-semibold text-gray-800">{day.title}</h2>
-        <span className="text-xs text-gray-400 ml-auto">{formatDate(day.date)}</span>
+        <h2 className="text-base font-semibold text-text-hi">{day.title}</h2>
+        <span className="text-xs text-text-muted ml-auto">{formatDate(day.date)}</span>
       </div>
 
       <div className="relative">
-        <div className="absolute left-[3.25rem] top-0 bottom-0 w-px bg-gray-100" />
+        <div className="absolute left-[3.25rem] top-0 bottom-0 w-px bg-border" />
         <div className="flex flex-col gap-2">
           {day.events.map((event, i) => (
             <EventCard key={i} event={event} categories={categories} />
